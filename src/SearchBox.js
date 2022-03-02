@@ -9,7 +9,7 @@ const SearchBox = (props) => {
         type='search' 
         placeholder='Search box'
         className='pa3 ba b--green bg-lightest-blue'
-        onChange = {(e)=>handleChange(e)}
+        onChange = {handleChange}
         value={searchText}
       />
     </div>
