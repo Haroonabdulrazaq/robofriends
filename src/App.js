@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css'
 import CardList from './CardList';
 import SearchBox from './SearchBox';
-import { robots } from './robots.js';
 import 'tachyons';
 
 
 const App =()=> {
   const [searchText, setSearchText] = useState('');
-  // const [robotes, setRobots] = useState(robots);
+  const [robots, setRobots] = useState([]);
+  const [loader, setLoader] = useState(false);
+
+  useEffect(() => {
+    setLoader(true)
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then((result) => {
+        return result.json()
+      })
+      .then((users)=>{
+        setRobots(users)
+        setLoader(false)
+      })
+  },[])
 
   const handleChange=(e)=>{
     setSearchText(e.target.value);
@@ -17,13 +29,17 @@ const App =()=> {
   const filteredRobot = robots.filter((robot)=>{
     return robot.name.toLowerCase().includes(searchText.toLowerCase());
   })
-  return (
-    <div className="App tc">
-      <h1>RoboFriends</h1>
-      <SearchBox handleChange={(e)=>handleChange(e)} searchText={searchText} />
-      <CardList searchText={searchText} robots={filteredRobot} />
-    </div>
-  );
+  if(loader){
+    return <h1 className='tc'>Loading...</h1>
+  } else {
+    return (
+      <div className="App tc">
+        <h1>RoboFriends</h1>
+        <SearchBox handleChange={(e)=>handleChange(e)} searchText={searchText} />
+        <CardList searchText={searchText} robots={filteredRobot} />
+      </div>
+    );
+  }
 }
 
 export default App;
