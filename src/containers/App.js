@@ -3,6 +3,7 @@ import './App.css'
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
+import Errorboundry from '../components/Errorboundry';
 import 'tachyons';
 
 
@@ -38,7 +39,9 @@ const App =()=> {
         <h1>RoboFriends</h1>
         <SearchBox handleChange={(e)=>handleChange(e)} searchText={searchText} />
         <Scroll>
-          <CardList searchText={searchText} robots={filteredRobot} />
+          <Errorboundry>
+            <CardList searchText={searchText} robots={filteredRobot} />
+          </Errorboundry>
         </Scroll>
       </div>
     );
