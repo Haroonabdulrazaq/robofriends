@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css'
 import CardList from './CardList';
 import SearchBox from './SearchBox';
+import Scroll from './Scroll';
 import 'tachyons';
 
 
@@ -36,7 +37,9 @@ const App =()=> {
       <div className="App tc">
         <h1>RoboFriends</h1>
         <SearchBox handleChange={(e)=>handleChange(e)} searchText={searchText} />
-        <CardList searchText={searchText} robots={filteredRobot} />
+        <Scroll>
+          <CardList searchText={searchText} robots={filteredRobot} />
+        </Scroll>
       </div>
     );
   }
