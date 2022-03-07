@@ -4,28 +4,23 @@ import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import Errorboundry from '../components/Errorboundry';
-import { setSearchField } from '../actions/index'
+import { setSearchField, requestRobots } from '../actions/index';
 import './App.css';
 import 'tachyons';
 
 
 const App =(props)=> {
   // const [searchText, setSearchText] = useState('');
-  const [robots, setRobots] = useState([]);
+  // const [robots, setRobots] = useState([]);
   const [loader, setLoader] = useState(false);
-  const searchText = useSelector(state => state.searchText);
+  const searchText = useSelector(state => state.search.searchText);
+  const robots = useSelector(state => state.robot.robots);
+  const isPending = useSelector(state => state.robot.isPending);
+  const error = useSelector(state => state.robot.error);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setLoader(true)
-    fetch('https://jsonplaceholder.typicode.com/users')
-      .then((result) => {
-        return result.json()
-      })
-      .then((users)=>{
-        setRobots(users)
-        setLoader(false)
-      })
+    dispatch(requestRobots())
   },[])
 
   const handleChange=(e)=>{
@@ -35,7 +30,8 @@ const App =(props)=> {
   const filteredRobot = robots.filter((robot)=>{
     return robot.name.toLowerCase().includes(searchText.toLowerCase());
   })
-  if(loader){
+
+  if(isPending){
     return <h1 className='tc'>Loading...</h1>
   } else {
     return (
