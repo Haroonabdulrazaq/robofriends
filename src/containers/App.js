@@ -1,21 +1,22 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/Scroll';
 import Errorboundry from '../components/Errorboundry';
+import { setSearchField } from '../actions/index'
 import './App.css';
 import 'tachyons';
 
 
 const App =(props)=> {
-  const [searchText, setSearchText] = useState('');
+  // const [searchText, setSearchText] = useState('');
   const [robots, setRobots] = useState([]);
   const [loader, setLoader] = useState(false);
-  const state = useSelector(state => console.log(state))
+  const searchText = useSelector(state => state.searchText);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log('I am the store from redux', props);
     setLoader(true)
     fetch('https://jsonplaceholder.typicode.com/users')
       .then((result) => {
@@ -28,7 +29,7 @@ const App =(props)=> {
   },[])
 
   const handleChange=(e)=>{
-    setSearchText(e.target.value);
+    dispatch(setSearchField(e.target.value))
   }
 
   const filteredRobot = robots.filter((robot)=>{
