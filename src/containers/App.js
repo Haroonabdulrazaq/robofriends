@@ -34,7 +34,7 @@ const App =(props)=> {
   } else {
     return (
       <div className="App tc">
-        <h1>RoboFriendsa</h1>
+        <h1>RoboFriends</h1>
         <SearchBox handleChange={(e)=>handleChange(e)} searchText={searchText} />
         <Scroll>
           <Errorboundry>
