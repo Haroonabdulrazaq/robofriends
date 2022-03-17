@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
@@ -10,19 +10,16 @@ import 'tachyons';
 
 
 const App =(props)=> {
-  // const [searchText, setSearchText] = useState('');
-  // const [robots, setRobots] = useState([]);
-  // const [loader, setLoader] = useState(false);
   const searchText = useSelector(state => state.search.searchText);
   const robot = useSelector(state => state.robot);
-  const {isPending, robots, error} = robot;
+  const {isPending, robots} = robot;
 
 
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(requestRobots())
-  },[])
+  },[dispatch])
 
   const handleChange=(e)=>{
     dispatch(setSearchField(e.target.value))
