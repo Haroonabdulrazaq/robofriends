@@ -6,7 +6,8 @@ const SearchBox = (props) => {
   return (
     <div className='pa2'>
       <input
-        type='search' 
+        type='search'
+        aria-label='Search Robots'
         placeholder='Search box'
         className='pa3 ba b--green bg-lightest-blue'
         onChange = {handleChange}
