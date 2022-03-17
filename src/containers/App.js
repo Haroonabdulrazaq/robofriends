@@ -12,11 +12,12 @@ import 'tachyons';
 const App =(props)=> {
   // const [searchText, setSearchText] = useState('');
   // const [robots, setRobots] = useState([]);
-  const [loader, setLoader] = useState(false);
+  // const [loader, setLoader] = useState(false);
   const searchText = useSelector(state => state.search.searchText);
-  const robots = useSelector(state => state.robot.robots);
-  const isPending = useSelector(state => state.robot.isPending);
-  const error = useSelector(state => state.robot.error);
+  const robot = useSelector(state => state.robot);
+  const {isPending, robots, error} = robot;
+
+
   const dispatch = useDispatch();
 
   useEffect(() => {

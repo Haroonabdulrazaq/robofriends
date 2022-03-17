@@ -25,4 +25,3 @@ const robotReducer = (state=initialStateRobot, action={})=>{
 }
 
 export default robotReducer;
-

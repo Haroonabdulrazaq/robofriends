@@ -1,7 +1,6 @@
 import { CHANGESEARCHFIELD } from '../actions/constants';
 
 
-
 const initialStateSearch = {
     searchText: ''
   }
