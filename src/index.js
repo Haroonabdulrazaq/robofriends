@@ -7,6 +7,8 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './containers/App';
 import rootReducer from './reducers/rootReducer';
+import * as serviceWorkerRegistration from './serviceWorkerRegistration';
+
 
 const logger = createLogger();
 
@@ -24,4 +26,4 @@ ReactDOM.render(
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-
+serviceWorkerRegistration.register();
