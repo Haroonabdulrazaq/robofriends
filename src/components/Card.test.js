@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, mount, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import Card from "./Card";
 
 import {configure} from 'enzyme';
@@ -13,7 +13,7 @@ configure({ adapter: new Adapter() });
 
 
 it('Wetin they occur',()=>{
-    expect(shallow(<Card/>).length).toEqual(1)
+    expect(shallow(<Card/>)).toMatchSnapshot() 
 })
 
 
