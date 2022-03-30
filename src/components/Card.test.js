@@ -12,7 +12,7 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 configure({ adapter: new Adapter() });
 
 
-it('Wetin they occur',()=>{
+it('Card component should matchSnapshot',()=>{
     expect(shallow(<Card/>)).toMatchSnapshot() 
 })
 

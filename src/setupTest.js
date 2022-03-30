@@ -5,4 +5,6 @@ import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
 
 
 
-configure({ adapter: new Adapter() });
+const setup = configure({ adapter: new Adapter() });
+
+export default setup;

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should the Scroll component match snapShot 1`] = `ShallowWrapper {}`;
